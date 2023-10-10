@@ -1,0 +1,33 @@
+[core]
+  quotepath = false                          # Schafft Abhilfe bei falsch dargestellten Sonderzeichen in Pfaden
+  autocrlf = input
+	excludesfile = HOME/.gitignore_global
+[pull]
+	rebase = true
+[push]
+	default = current
+[pack]
+  threads = 0
+[color]
+  ui = auto  
+[alias]
+  prunelocal = !sh -c 'git branch --merged | grep -v "^develop$" | xargs git branch -d'
+	update = !git pull origin develop:develop && git rebase develop --ignore-whitespace
+  new = !git checkout develop && git pull && git checkout -b
+  ann = annotate
+  bvv = branch -vv
+  co = checkout
+  di = diff
+  lg = log --decorate --graph --name-status
+  lg1 = log --decorate --graph --oneline
+  upbase = rebase @{u}
+  st = status -s                             # Eine knappere Übersicht, die Stark an "svn status" erinnert
+  root = rev-parse --show-toplevel
+  dx = diff --cached
+  hard = reset --hard
+  fixup = commit --amend --no-edit
+  please = push --force-with-lease
+  saw = !git pull && git push
+  upstream = !git branch --set-upstream-to="origin/$(git rev-parse --abbrev-ref HEAD)"
+[init]
+	defaultBranch = main
