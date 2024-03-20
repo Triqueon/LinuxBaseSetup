@@ -30,4 +30,6 @@
   saw = !git pull && git push
   upstream = !git branch --set-upstream-to="origin/$(git rev-parse --abbrev-ref HEAD)"
 [init]
-	defaultBranch = main
+  defaultBranch = main
+[help]
+  autoCorrect = prompt
